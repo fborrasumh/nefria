@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Si usas este software, cítalo con estos metadatos."
+title: "NefrIA"
+type: software
+authors:
+  - family-names: "Borrás Rocher"
+    given-names: "Fernando"
+    affiliation: "Universidad Miguel Hernández de Elche"
+    orcid: "https://orcid.org/0000-0002-5519-4573"
+  - family-names: "Gómez Pérez"
+    given-names: "Luis"
+    affiliation: "Universidad Miguel Hernández de Elche"
+    orcid: "https://orcid.org/0000-0003-1396-0484"
+doi: "10.5281/zenodo.23692688"
+version: "1.0.0"
+date-released: "2026-10-27"
+url: "https://fborrasumh.github.io/nefria/"
+repository-code: "https://github.com/fborrasumh/nefria"
+license: MIT

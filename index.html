@@ -3615,7 +3615,7 @@ const IMGS = {
   hidmod: ['Ultrasound of right kidney moderate hydronephrosis.jpg', 'Cerevisae', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0/'],
   linfo: ['Ultrasonography of renal lymphoma.jpg', 'Hansen KL, Nielsen MB, Ewertsen C. Diagnostics 2016;6:2 (doi:10.3390/diagnostics6010002)', 'CC BY 4.0', 'https://creativecommons.org/licenses/by/4.0/']
 };
-const imgURL = id => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(IMGS[id][0]) + '?width=900';
+const imgURL = id => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(IMGS[id][0]) + '?width=960'   /* Wikimedia solo sirve a terceros los anchos estándar (20…500, 960, 1280…); 900 daba error 429 */;
 const imgPag = id => 'https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(IMGS[id][0].replace(/ /g, '_'));
 /* ítems de identificación: [id, imagen, competencia, pregunta, opciones (correcta primero), explicación] */
 const CIL = ['Cilindro de células epiteliales tubulares|Renal tubular epithelial cell cast|Cilindro de células epiteliais tubulares', 'Cilindro granuloso pardo («marrón fangoso»)|Muddy brown granular cast|Cilindro granuloso castanho («lamacento»)', 'Cilindro leucocitario|White blood cell cast|Cilindro leucocitário', 'Cilindro hemático|Red blood cell cast|Cilindro hemático', 'Cilindro hialino|Hyaline cast|Cilindro hialino', 'Cristales de oxalato cálcico|Calcium oxalate crystals|Cristais de oxalato de cálcio'];
@@ -3666,7 +3666,7 @@ if (typeof module !== 'undefined') module.exports = {genAB, flagDe, PANELES, ITE
 function dgEst() { return S.diag || (S.diag = {tab: 'lab', pan: 'erc', resp: {}, ab: null, img: {}}); }
 function figura(id) {
   const [nom, au, li, liu] = IMGS[id];
-  return `<figure class="nf-fig"><a href="${imgPag(id)}" target="_blank" rel="noopener" title="${esc(T3('Abrir en Wikimedia Commons (ampliar)|Open on Wikimedia Commons (zoom)|Abrir no Wikimedia Commons (ampliar)'))}"><img src="${imgURL(id)}" alt="${esc(nom.replace(/\.\w+$/, ''))}" loading="lazy" onerror="this.parentNode.parentNode.classList.add('nf-off')"></a><p class="nf-offmsg">${esc(T3('La imagen se carga desde Wikimedia Commons y necesita conexión.|The image loads from Wikimedia Commons and needs a connection.|A imagem carrega do Wikimedia Commons e precisa de ligação.'))}</p><figcaption>${esc(au)} · <a href="${liu}" target="_blank" rel="noopener">${esc(T3(li))}</a> · <a href="${imgPag(id)}" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>`;
+  return `<figure class="nf-fig"><a href="${imgPag(id)}" target="_blank" rel="noopener" title="${esc(T3('Abrir en Wikimedia Commons (ampliar)|Open on Wikimedia Commons (zoom)|Abrir no Wikimedia Commons (ampliar)'))}"><img src="${imgURL(id)}" alt="${esc(nom.replace(/\.\w+$/, ''))}" loading="lazy" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]}else this.parentNode.parentNode.classList.add('nf-off')"></a><p class="nf-offmsg">${esc(T3('La imagen se carga desde Wikimedia Commons y necesita conexión.|The image loads from Wikimedia Commons and needs a connection.|A imagem carrega do Wikimedia Commons e precisa de ligação.'))}</p><figcaption>${esc(au)} · <a href="${liu}" target="_blank" rel="noopener">${esc(T3(li))}</a> · <a href="${imgPag(id)}" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>`;
 }
 function pintaDiag() {
   const E = dgEst();
